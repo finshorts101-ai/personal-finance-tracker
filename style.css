@@ -1,0 +1,76 @@
+:root {
+    --bg: #0b0f1a;
+    --card: #161b2c;
+    --primary: #10b981;
+    --text: #ffffff;
+    --border: #2d334a;
+}
+
+body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; }
+
+.full-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); display: flex; justify-content: center; align-items: center; z-index: 100; }
+.welcome-box { background: var(--card); padding: 40px; border-radius: 20px; border: 1px solid var(--border); text-align: center; width: 320px; }
+
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 15px 30px; background: var(--card); border-bottom: 1px solid var(--border); }
+.tab-btn { background: none; border: none; color: #94a3b8; padding: 10px 20px; cursor: pointer; }
+.tab-btn.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+
+.main-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; padding: 25px; max-width: 1200px; margin: 0 auto; }
+.card {
+    position: relative; /* Essential for positioning the ✏️ and 🗑️ */
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+input { width: 100%; padding: 10px; margin: 10px 0; background: #0b0f1a; border: 1px solid var(--border); color: white; border-radius: 6px; box-sizing: border-box; }
+.btn-primary { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+.account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.hidden { display: none !important; }
+.user-tag { color: var(--primary); font-weight: bold; }
+
+
+/* MOBILE RESPONSIVE FIX */
+@media (max-width: 768px) {
+    .main-layout {
+        display: flex;
+        flex-direction: column; /* Stacks columns vertically */
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .left-col, .right-col {
+        width: 100%; /* Makes both sections full width */
+    }
+
+    .account-grid {
+        grid-template-columns: 1fr; /* One card per row on phones */
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .tabs {
+        overflow-x: auto; /* Allows sliding tabs if they are too wide */
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding-bottom: 5px;
+    }
+
+    .welcome-box {
+        width: 90%; /* Responsive welcome card */
+        padding: 20px;
+    }
+}
